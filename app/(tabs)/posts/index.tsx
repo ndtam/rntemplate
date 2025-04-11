@@ -1,69 +1,69 @@
-import { Image, StyleSheet, Platform } from "react-native";
-
-import { HelloWave } from "@/components/HelloWave";
-import ParallaxScrollView from "@/components/ParallaxScrollView";
-import { ThemedText } from "@/components/ThemedText";
-import { ThemedView } from "@/components/ThemedView";
-import { Link, router } from "expo-router";
-import { Pressable } from 'react-native';
+import React, { useEffect, useState } from "react";
+import { SafeAreaView } from "react-native-safe-area-context";
+import {
+  FlatList,
+  Text,
+  View,
+  StyleSheet,
+  Button,
+  ActivityIndicator,
+} from "react-native";
+import axiosInstance from "../../../network/axiosInstance";
+import PostItem from "../../../network/entities/PostItem";
 
 export default function PostsScreen() {
+  const [posts, setPosts] = useState([]);
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    axiosInstance
+      .get("/posts")
+      .then((response) => {
+        setPosts(response.data);
+        setLoading(false);
+      })
+      .catch((error) => {
+        console.error("Error fetching users:", error);
+        setLoading(false);
+      });
+  }, []);
+
+  if (loading) return <ActivityIndicator />;
+
   return (
-    <ParallaxScrollView
-      headerBackgroundColor={{ light: "#A1CEDC", dark: "#1D3D47" }}
-      headerImage={
-        <Image
-          source={require("@/assets/images/partial-react-logo.png")}
-          style={styles.reactLogo}
-        />
-      }
-    >
-      <ThemedView style={styles.titleContainer}>
-        <ThemedText type="title">Posts screen!</ThemedText>
-        <HelloWave />
-      </ThemedView>
-
-      <ThemedView style={styles.titleContainer}>
-        <Link href="/posts/123"> View user (id inline)</Link>
-        <HelloWave />
-      </ThemedView>
-
-      <ThemedView style={styles.titleContainer}>
-        <Link
-          href={{
-            pathname: "/posts/[postID]",
-            params: { postID: "123" },
-          }}
-        >
-          View user (id in params in href)
-        </Link>
-        <HelloWave />
-      </ThemedView>
-      {/* <ThemedView style={styles.titleContainer}>
-      <Pressable onPress={() => router.navigate('/posts', { postID: '123' })}>
-        <ThemedText>View user (imperative)</ThemedText>
-      </Pressable>
-        <HelloWave />
-      </ThemedView> */}
-    </ParallaxScrollView>
+    <SafeAreaView style={styles.safeView}>
+      {/* Add style={{flex: 1}} for each View element who is a parent for FlatList */}
+      <View style={[styles.root, { flex: 1 }]}>
+        <View style={{ flex: 1 }}>
+          <FlatList
+            data={posts}
+            renderItem={({ item }) => <PostItem post={item} />}
+          />
+        </View>
+      </View>
+    </SafeAreaView>
   );
 }
 
 const styles = StyleSheet.create({
-  titleContainer: {
-    flexDirection: "row",
+  safeView: {
+    flex: 1,
+  },
+
+  root: {
+    flex: 1,
+    justifyContent: "space-around",
     alignItems: "center",
-    gap: 8,
   },
-  stepContainer: {
-    gap: 8,
-    marginBottom: 8,
+
+  container: {
+    justifyContent: "center",
+    alignItems: "center",
   },
-  reactLogo: {
-    height: 178,
-    width: 290,
-    bottom: 0,
-    left: 0,
-    position: "absolute",
+
+  fontBlack: {
+    fontFamily: "Black",
+    marginTop: 20,
+    fontSize: 20,
   },
 });
