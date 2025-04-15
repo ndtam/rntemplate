@@ -19,7 +19,7 @@ export default function Dashboard() {
           router.replace("/(tabs)/setting/users")
         }
       >
-        Logout
+        Go to Login
       </Button>
     </Background>
   )

@@ -1,6 +1,5 @@
 import {configureStore, combineReducers} from '@reduxjs/toolkit';
 import {persistStore, persistReducer} from 'redux-persist';
-// import {reduxStorage} from './storage';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 
 // Slices
@@ -9,6 +8,15 @@ import tasksSlice from '../redux/tasksSlice';
 import userSlice from '../redux/userSlice';
 import dummyNetwokSlice from '../redux/networkSlice';
 
+/**
+ * The root reducer for the Redux store.
+ * It combines multiple slices of state into a single reducer function.
+ *
+ * @param {object} appSlice - The app slice reducer.
+ * @param {object} tasksSlice - The tasks slice reducer.
+ * @param {object} userSlice - The user slice reducer.
+ * @param {object} dummyNetwokSlice - The dummy network slice reducer.
+ */
 const rootReducer = combineReducers({
   app: appSlice,
   todos: tasksSlice,
@@ -16,11 +24,12 @@ const rootReducer = combineReducers({
   dummyNetwork: dummyNetwokSlice,
 });
 
+
 const persistConfig = {
   key: 'root',
   storage: AsyncStorage, // AsyncStorage
-  blacklist: ['user'], // these reduce will not persist data
-  whitelist: ['todos', 'app'], // these reduce will persist data
+  blacklist: ['app'], // these reduce will not persist data
+  whitelist: ['todos', 'user'], // these reduce will persist data
 };
 
 const persistedReducer = persistReducer(persistConfig, rootReducer);

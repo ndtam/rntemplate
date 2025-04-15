@@ -1,13 +1,11 @@
 import React from 'react'
 import { ImageBackground, StyleSheet, KeyboardAvoidingView } from 'react-native'
-// import { theme } from '../core/theme'
-
 import { ReactNode } from 'react';
 
 export default function Background({ children }: { children: ReactNode }) {
   return (
     <ImageBackground
-      source={require('../assets/background_dot.png')}
+      source={require('../assets/images/background_dot.png')}
       resizeMode="repeat"
       style={styles.background}
     >

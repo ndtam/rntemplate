@@ -1,46 +1,61 @@
-import { Image, StyleSheet, Platform } from 'react-native';
+import {
+  Image,
+  StyleSheet,
+  Platform,
+  TextInput,
+  FlatList,
+  View,
+  Text
+} from "react-native";
+import { SafeAreaView } from "react-native-safe-area-context";
 
-import { HelloWave } from '@/components/HelloWave';
-import ParallaxScrollView from '@/components/ParallaxScrollView';
-import { ThemedText } from '@/components/ThemedText';
-import { ThemedView } from '@/components/ThemedView';
+import React, { useState, useRef, useEffect } from "react";
+import { useSelector, useDispatch } from "react-redux";
+import { RootState } from "../../store/store";
+import UserItem from "@/network/entities/UserItem";
+import { useTheme } from 'react-native-paper'
+
+const theme = useTheme();
 
 export default function HomeScreen() {
+
+  const userList = useSelector((state: RootState) => state.user.entities);
+
   return (
-    <ParallaxScrollView
-      headerBackgroundColor={{ light: '#A1CEDC', dark: '#1D3D47' }}
-      headerImage={
-        <Image
-          source={require('@/assets/images/partial-react-logo.png')}
-          style={styles.reactLogo}
-        />
-      }>
-      <ThemedView style={styles.titleContainer}>
-        <ThemedText type="title">Home screen!</ThemedText>
-        <HelloWave />
-      </ThemedView>
-      <ThemedView style={styles.stepContainer}>
-        <ThemedText type="subtitle">Description for Home!!!</ThemedText>
-      </ThemedView>
-    </ParallaxScrollView>
+    <SafeAreaView style={styles.safeView}>
+      {/* Add style={{flex: 1}} for each View element who is a parent for FlatList */}
+      <View style={[styles.root, { flex: 1 }]}>
+        <Text>Màn hình hiển thị all user create from Setting - Sing up</Text>
+        <Text>Data lưu local với Async Storage</Text>
+          <FlatList
+            data={userList}
+            renderItem={({ item }) => <UserItem post={item} />}
+          />
+      </View>
+    </SafeAreaView>
   );
 }
 
 const styles = StyleSheet.create({
-  titleContainer: {
-    flexDirection: 'row',
-    alignItems: 'center',
-    gap: 8,
+  safeView: {
+    flex: 1,
+    backgroundColor: theme.colors.tertiary,
   },
-  stepContainer: {
-    gap: 8,
-    marginBottom: 8,
+
+  root: {
+    flex: 1,
+    justifyContent: "space-around",
+    alignItems: "center",
   },
-  reactLogo: {
-    height: 178,
-    width: 290,
-    bottom: 0,
-    left: 0,
-    position: 'absolute',
+
+  container: {
+    justifyContent: "center",
+    alignItems: "center",
+  },
+
+  fontBlack: {
+    fontFamily: "Black",
+    marginTop: 20,
+    fontSize: 20,
   },
 });

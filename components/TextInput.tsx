@@ -1,7 +1,7 @@
 import React from 'react'
 import { View, StyleSheet, Text } from 'react-native'
 import { TextInput as Input } from 'react-native-paper'
-import { useTheme } from '../theme/useTheme'
+import { useTheme } from 'react-native-paper'
 
 interface TextInputProps {
   errorText?: string;
@@ -10,7 +10,7 @@ interface TextInputProps {
 }
 
 export default function TextInput({ errorText, description, ...props }: TextInputProps) {
-  const { theme } = useTheme()
+  const theme = useTheme()
   return (
     <View style={styles.container}>
       <Input

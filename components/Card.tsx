@@ -1,16 +1,15 @@
 import React from 'react';
 import {StyleSheet, View} from 'react-native';
-import {useTheme} from '../theme/useTheme';
-import {spacing} from '../theme/theme';
 import {CardPropsType} from '../types/components';
+import { useTheme } from 'react-native-paper'
 
 const Card = ({children, style}: CardPropsType) => {
-  const {theme} = useTheme();
+  const theme = useTheme();
   return (
     <View
       style={[
         styles.card,
-        {backgroundColor: theme.cardBg, borderColor: theme.cardBorderColor},
+        {backgroundColor: theme.colors.background, borderColor: theme.colors.outline},
         style,
       ]}>
       {children}
@@ -24,9 +23,9 @@ const styles = StyleSheet.create({
   card: {
     width: '100%',
     backgroundColor: '#ffffff',
-    paddingHorizontal: spacing.layoutPaddingH,
-    paddingVertical: spacing.layoutPaddingH,
-    borderRadius: spacing.borderRadius,
+    paddingHorizontal: 16,
+    paddingVertical: 16,
+    borderRadius: 16,
     borderWidth: StyleSheet.hairlineWidth,
     borderColor: '#fff',
   },

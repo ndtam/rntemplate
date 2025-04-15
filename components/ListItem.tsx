@@ -1,9 +1,8 @@
 import * as React from 'react';
-import {StyleSheet, Pressable} from 'react-native';
+import {StyleSheet, Pressable, Text} from 'react-native';
 import Icon from 'react-native-vector-icons/Ionicons';
-import {useTheme, ThemeContextInterface} from '../theme/useTheme';
+import { useTheme } from 'react-native-paper'
 import Card from './Card';
-import Text from './Text';
 
 interface TaskItemType {
   id: string;
@@ -12,13 +11,13 @@ interface TaskItemType {
 }
 
 interface ListItemType {
-  item: TaskItemType;
+  item: any;
   index?: number;
-  onPress: (arg0: string) => void;
+  onPress: (arg0: any) => void;
 }
 
 const ListItem = ({item, onPress}: ListItemType): JSX.Element => {
-  const {theme}: Partial<ThemeContextInterface> = useTheme();
+  const theme = useTheme();
 
   return (
     <Card style={styles.card}>
@@ -32,20 +31,13 @@ const ListItem = ({item, onPress}: ListItemType): JSX.Element => {
         accessibilityRole="radio"
         accessibilityState={{checked: item.done}}
         onPress={() => onPress(item.id)}>
-        <Text
-          style={[
-            // eslint-disable-next-line react-native/no-inline-styles
-            {
-              color: theme?.color,
-              textDecorationLine: item.done ? 'line-through' : 'none',
-            },
-          ]}>
+        <Text>
           {item.title}
         </Text>
         <Icon
           name="checkbox"
           size={20}
-          color={item.done ? theme.primary : '#CECECE'}
+          color={item.done ? theme.colors.primary : '#CECECE'}
         />
       </Pressable>
     </Card>

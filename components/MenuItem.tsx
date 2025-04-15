@@ -1,6 +1,6 @@
 import * as React from 'react';
 import {View, Pressable, StyleSheet} from 'react-native';
-import {useTheme} from '../theme/useTheme';
+import { useTheme } from 'react-native-paper'
 import {MenuItemPropsType} from '../types/components';
 
 import Text from './Text';
@@ -10,10 +10,10 @@ const MenuItem = ({
   onPress,
   rightItem,
 }: MenuItemPropsType) => {
-  const {theme} = useTheme();
+  const theme = useTheme();
   return (
     <Pressable
-      style={[styles.menuItem, {borderTopColor: theme.layoutBg}]}
+      style={[styles.menuItem, {borderTopColor: theme.colors.background}]}
       onPress={onPress}>
       <View>
         <Text>{label}</Text>

@@ -1,8 +1,6 @@
 import {StyleSheet, View, Pressable, ActivityIndicator} from 'react-native';
 import React from 'react';
-
-import {useTheme} from '../theme/useTheme';
-import {spacing} from '../theme/theme';
+import { useTheme } from 'react-native-paper'
 import Text from './Text';
 
 type NetworkExampleCardProps = {
@@ -18,7 +16,7 @@ const NetwokExampleCard = ({
   onPress = () => {},
   children,
 }: NetworkExampleCardProps) => {
-  const {theme} = useTheme();
+  const theme = useTheme();
 
   return (
     <View style={styles.card}>
@@ -26,16 +24,16 @@ const NetwokExampleCard = ({
         style={[
           styles.cardHeader,
           {
-            backgroundColor: theme.cardBg,
-            borderTopLeftRadius: spacing.borderRadius,
-            borderTopRightRadius: spacing.borderRadius,
+            backgroundColor: theme.colors.background,
+            borderTopLeftRadius: 16,
+            borderTopRightRadius: 16,
           },
         ]}>
-        <Text style={[styles.cardTitle, {color: theme.color}]}>{title}</Text>
+        <Text style={[styles.cardTitle, {color: theme.colors.secondary}]}>{title}</Text>
         <Pressable
           style={({pressed}) => [
             styles.btnFire,
-            {backgroundColor: pressed ? theme.primary + '50' : theme.primary},
+            {backgroundColor: pressed ? theme.colors.primary + '50' : theme.colors.primary},
           ]}
           onPress={onPress}>
           {loading ? (
@@ -48,7 +46,7 @@ const NetwokExampleCard = ({
         </Pressable>
       </View>
 
-      <View style={[styles.cardBody, {backgroundColor: theme.cardBg + '60'}]}>
+      <View style={[styles.cardBody, {backgroundColor: theme.colors.background + '60'}]}>
         {children}
       </View>
     </View>

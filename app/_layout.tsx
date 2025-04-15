@@ -1,7 +1,4 @@
-import {
-  DarkTheme,
-  DefaultTheme,
-} from "@react-navigation/native";
+import { DarkTheme, DefaultTheme } from "@react-navigation/native";
 import { useFonts } from "expo-font";
 import { Stack } from "expo-router";
 import * as SplashScreen from "expo-splash-screen";
@@ -11,10 +8,9 @@ import "react-native-reanimated";
 
 import { useColorScheme } from "@/hooks/useColorScheme";
 
-import {SafeAreaProvider} from 'react-native-safe-area-context';
+import { SafeAreaProvider } from "react-native-safe-area-context";
 
-import ReduxProvider from '../store/reduxProvider';
-import {ThemeProvider} from '../theme/useTheme';
+import ReduxProvider from "../store/reduxProvider";
 
 // Prevent the splash screen from auto-hiding before asset loading is complete.
 SplashScreen.preventAutoHideAsync();
@@ -48,13 +44,11 @@ export default function RootLayout() {
 
     <SafeAreaProvider>
       <ReduxProvider>
-        <ThemeProvider>
-          <Stack>
-            <Stack.Screen name="(tabs)" options={{ headerShown: false }} />
-            <Stack.Screen name="+not-found" />
-          </Stack>
-          <StatusBar style="auto" />
-        </ThemeProvider>
+        <Stack>
+          <Stack.Screen name="(tabs)" options={{ headerShown: false }} />
+          <Stack.Screen name="+not-found" />
+        </Stack>
+        <StatusBar style="auto" />
       </ReduxProvider>
     </SafeAreaProvider>
   );

@@ -3,6 +3,7 @@
  */
 export enum Routes {
   Home = 'home',
+  HomeDetail = 'homedetail',
   Posts = 'Posts',
   PostDetail = 'detail',
   Settings = 'Settings',
@@ -25,6 +26,11 @@ export type RootStackParams = {
 export type PostStackParams = {
   [Routes.Posts]: undefined;
   [Routes.PostDetail]: { id: number, title: string, body: string };
+};
+
+export type UserStackParams = {
+  [Routes.Home]: undefined;
+  [Routes.HomeDetail]: { name: string, username: string, token: string };
 };
 
 /**

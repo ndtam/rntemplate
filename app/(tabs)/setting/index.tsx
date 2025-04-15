@@ -1,11 +1,11 @@
 import { Image, StyleSheet, Platform } from "react-native";
 
-import { HelloWave } from "@/components/HelloWave";
 import ParallaxScrollView from "@/components/ParallaxScrollView";
 import { ThemedText } from "@/components/ThemedText";
 import { ThemedView } from "@/components/ThemedView";
 import { Link, router } from "expo-router";
-import { Pressable } from 'react-native';
+import { Pressable } from "react-native";
+import Button from "../../../components/Button";
 
 export default function SettingScreen() {
   return (
@@ -20,19 +20,25 @@ export default function SettingScreen() {
     >
       <ThemedView style={styles.titleContainer}>
         <ThemedText type="title">Setting screen!</ThemedText>
-        <HelloWave />
       </ThemedView>
 
       <ThemedView style={styles.titleContainer}>
         <Link href="/setting/users"> View user (id inline)</Link>
-        <HelloWave />
       </ThemedView>
+      <ThemedView style={styles.titleContainer}>
+        or using button custom layout
+      </ThemedView>
+      <Button
+        mode="outlined"
+        onPress={() => router.navigate("/setting/users")}
+      >
+        Login screen go
+      </Button>
 
       <ThemedView style={styles.titleContainer}>
-      <Pressable onPress={() => router.navigate('/setting/profile')}>
-        <ThemedText>View profile (imperative)</ThemedText>
-      </Pressable>
-        <HelloWave />
+        <Pressable onPress={() => router.navigate("/setting/profile")}>
+          <ThemedText>View profile (imperative)</ThemedText>
+        </Pressable>
       </ThemedView>
       {/* <ThemedView style={styles.titleContainer}>
       <Pressable onPress={() => router.navigate('/posts', { postID: '123' })}>

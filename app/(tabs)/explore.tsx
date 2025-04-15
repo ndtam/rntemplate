@@ -3,17 +3,16 @@ import {StyleSheet, FlatList, View, TextInput, ActivityIndicator, Text} from 're
 
 import {useSelector, useDispatch} from 'react-redux';
 import Icon from 'react-native-vector-icons/Ionicons';
+import { useTheme } from 'react-native-paper'
 
 import {taskAdded, taskToggled} from '../../redux/tasksSlice';
 import {RootState} from '../../store/store';
 import {Task} from '../../redux/tasksSlice';
 
-import {useTheme} from '../../theme/useTheme';
 import Layout from '../../components/Layout';
 import Card from '../../components/Card';
 import ListItem from '../../components/ListItem';
 import {Button} from '../../components/Button/Button';
-import {typeVariants} from '../../theme/theme';
 
 type Movie = {
   id: string;
@@ -43,7 +42,7 @@ export default function TaskScreen() {
   }, []);
 
 
-  const {theme} = useTheme();
+  const theme = useTheme();
 
   const inputRef = useRef<TextInput>(null);
 
@@ -99,28 +98,27 @@ export default function TaskScreen() {
       {/* Tasks Listing ends here */}
 
       <Card
-        style={[styles.inputCard, {borderTopColor: theme?.cardBorderColor}]}>
+        style={[styles.inputCard, {borderTopColor: theme?.colors.surface}]}>
         {/* TextInput and InputButton starts here */}
         <View style={styles.inputBtnRow}>
           <TextInput
             testID="Tasks.newTaskInput"
             ref={inputRef}
             placeholder="New Task"
-            placeholderTextColor={theme?.color}
+            placeholderTextColor={theme?.colors.secondary}
             style={[
               styles.input,
-              typeVariants.bodyMedium,
               {
-                color: theme?.color,
-                backgroundColor: theme?.layoutBg,
-                borderColor: theme?.layoutBg,
+                color: theme?.colors.primary,
+                backgroundColor: theme?.colors.background,
+                borderColor: theme?.colors.surface,
               },
             ]}
             onChangeText={t => setText(t)}
             onSubmitEditing={() => addNewTask()}
           />
           <Button onPress={addNewTask} style={styles.btnAdd}>
-            <Icon name="checkmark-sharp" size={20} color={theme.layoutBg} />
+            <Icon name="checkmark-sharp" size={20} color={theme.colors.background} />
           </Button>
         </View>
         {/* TextInput and InputButton ends here */}

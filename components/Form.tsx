@@ -1,25 +1,24 @@
 import React from 'react';
 import {StyleSheet, View, Text, TextInput} from 'react-native';
-import {useTheme} from '../theme/useTheme';
-import {spacing, typeSizes} from '../theme/theme';
 import {InputPropsType} from '../types/components';
+import { useTheme } from 'react-native-paper'
 
 const Input = ({style, error, ...rest}: InputPropsType) => {
-  const {theme} = useTheme();
+  const theme = useTheme();
   return (
     <View style={styles.inputWrp}>
       <TextInput
         {...rest}
         style={[
           styles.input,
-          {color: theme.color, borderColor: theme.layoutBg},
+          {color: theme.colors.tertiary, borderColor: theme.colors.outline},
         
         ]}
       />
       {error ? (
         <Text
           testID={rest.testID + '-error'}
-          style={[styles.error, {color: theme.error}]}>
+          style={[styles.error, {color: theme.colors.error}]}>
           {error}
         </Text>
       ) : null}
@@ -31,15 +30,15 @@ export {Input};
 
 const styles = StyleSheet.create({
   inputWrp: {
-    marginBottom: spacing.cardMarginB,
+    marginBottom: 16,
   },
   input: {
     height: 45,
     borderColor: '#000000',
     borderWidth: StyleSheet.hairlineWidth,
-    borderRadius: spacing.borderRadius,
+    borderRadius: 16,
   },
   error: {
-    fontSize: typeSizes.FONT_SIZE_SMALL,
+    fontSize: 12,
   },
 });

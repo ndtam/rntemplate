@@ -1,7 +1,7 @@
 import * as React from 'react';
 import {Pressable, Text, StyleSheet, ViewStyle} from 'react-native';
 
-import {useTheme} from '../../theme/useTheme';
+import { useTheme } from 'react-native-paper'
 
 export type ButtonProps = {
   onPress: () => void;
@@ -11,12 +11,12 @@ export type ButtonProps = {
 };
 
 export const Button = ({onPress, text, children, style}: ButtonProps) => {
-  const {theme} = useTheme();
+  const theme = useTheme();
   return (
     <Pressable
       style={({pressed}) => [
         styles.container,
-        {backgroundColor: pressed ? `${theme.primary}ee` : theme.primary},
+        {backgroundColor: pressed ? `${theme.colors.primary}ee` : theme.colors.primary},
         style,
       ]}
       onPress={onPress}>
