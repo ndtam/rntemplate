@@ -1,12 +1,13 @@
 import { LoggedOut } from "../redux/appSlice";
-import Store from "../store/index";
+// import Store from "../store/index";
+import {store} from '../store/store';
 import axios from "axios";
 
 const options = {
   baseURL: 'https://jsonplaceholder.typicode.com',
   headers: {
     "Content-Type": "application/json",
-    Authorization: Store.getState().AppReducer.authToken,
+    Authorization: store.getState().app.authToken,
   },
 };
 
@@ -39,7 +40,7 @@ axiosInstance.interceptors.response.use(
       console.log
       // showToast("Unauthorized", ToastColorEnum.Error);
 
-      Store.dispatch(LoggedOut());
+      store.dispatch(LoggedOut());
     } else if (error.response?.data) {
       error.response?.data.Messages?.forEach((message: any) => {
         console.log(message.message, message.type);

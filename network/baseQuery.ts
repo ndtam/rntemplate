@@ -3,7 +3,7 @@ import {
   FetchArgs,
   FetchBaseQueryError,
 } from "@reduxjs/toolkit/query";
-import { RootState } from "../store/index";
+import { RootState } from "../store/store";
 import { LoggedOut, setAuthToken } from "../redux/appSlice";
 import type { FetchBaseQueryArgs } from "@reduxjs/toolkit/query";
 
@@ -13,7 +13,7 @@ import type { FetchBaseQueryArgs } from "@reduxjs/toolkit/query";
 const FetchBaseQueryArgs: FetchBaseQueryArgs = {
   baseUrl: "/",
   prepareHeaders: (headers, { getState }) => {
-    const token = (getState() as RootState).AppReducer.authToken;
+    const token = (getState() as RootState).app.authToken;
     // If we have a token set in state, let's assume that we should be passing it.
     if (token) {
       headers.set("authorization", `Bearer ${token}`);

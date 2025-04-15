@@ -2,9 +2,9 @@
  * Enum representing the available routes in the application.
  */
 export enum Routes {
-  Home = 'Home',
+  Home = 'home',
   Posts = 'Posts',
-  PostDetail = 'PostDetail',
+  PostDetail = 'detail',
   Settings = 'Settings',
   User = 'User',
   Profile = 'Profile',
@@ -20,7 +20,6 @@ export type RootStackParams = {
   [Routes.Posts]: undefined;
   [Routes.Settings]: undefined;
   [Routes.Explore]: undefined;
-  [Routes.PostDetail]: { id: number, title: string, body: string };
 };
 
 export type PostStackParams = {

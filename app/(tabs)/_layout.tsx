@@ -7,6 +7,7 @@ import { IconSymbol } from '@/components/ui/IconSymbol';
 import TabBarBackground from '@/components/ui/TabBarBackground';
 import { Colors } from '@/constants/Colors';
 import { useColorScheme } from '@/hooks/useColorScheme';
+import { AntDesign, Ionicons } from "@expo/vector-icons";
 
 export default function TabLayout() {
   const colorScheme = useColorScheme();
@@ -27,7 +28,7 @@ export default function TabLayout() {
         }),
       }}>
       <Tabs.Screen
-        name="index"
+        name="home"
         options={{
           title: 'Home',
           tabBarIcon: ({ color }) => <IconSymbol size={28} name="house.fill" color={color} />,
@@ -37,14 +38,14 @@ export default function TabLayout() {
         name="posts"
         options={{
           title: 'Posts',
-          tabBarIcon: ({ color }) => <IconSymbol size={28} name="spigot.fill" color={color} />,
+          tabBarIcon: ({ color }) => <AntDesign size={28} name="file1" color={color} />,
         }}
       />
       <Tabs.Screen
         name="setting"
         options={{
           title: 'Setting',
-          tabBarIcon: ({ color }) => <IconSymbol size={28} name="photo.fill" color={color} />,
+          tabBarIcon: ({ color }) => <AntDesign size={28} name="setting" color={color} />,
         }}
       />
       <Tabs.Screen

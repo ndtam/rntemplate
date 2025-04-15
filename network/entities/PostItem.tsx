@@ -3,6 +3,7 @@ import { StyleSheet, Text, TouchableOpacity, View } from "react-native";
 import PostEntity from "./PostEntity";
 import Routes, { PostStackParams } from "../../utils/Routes";
 import { StackNavigationProp } from "@react-navigation/stack";
+import { Link } from "expo-router";
 
 interface PostItemProps {
   post: PostEntity;
@@ -17,12 +18,25 @@ const PostItem = ({ post }: PostItemProps) => {
   };
 
   return (
-    <TouchableOpacity onPress={onPress}>
+    <>
       <View style={styles.container}>
-        <Text style={styles.title}>{title}</Text>
-        <Text style={styles.body}>{body}</Text>
+      <Link
+          href={{
+            pathname: "/posts/[postID]",
+            params: { postID: post.id},
+          }}
+        >
+          Mock using [posts/[postID].tsx] - post.id - {post.id}
+        </Link>
       </View>
-    </TouchableOpacity>
+      
+      <TouchableOpacity onPress={onPress}>
+        <View style={styles.container}>
+          <Text style={styles.title}>{title}</Text>
+          <Text style={styles.body}>{body}</Text>
+        </View>
+      </TouchableOpacity>
+    </>
   );
 };
 

@@ -1,7 +1,13 @@
-import { IAppReducer } from "./IAppReducer";
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
+import { ColorSchemeName } from 'react-native'; 
 
-const initialState: IAppReducer = {};
+const initialState = {
+  isSignedIn: false,
+  userColorScheme: "light" as ColorSchemeName,
+  user: '' as string | null,
+  authToken: '',
+  expoToken: '',
+};
 
 export const appSlice = createSlice({
   name: "appReducer",

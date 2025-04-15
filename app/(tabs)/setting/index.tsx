@@ -24,13 +24,13 @@ export default function SettingScreen() {
       </ThemedView>
 
       <ThemedView style={styles.titleContainer}>
-        <Link href="/setting/user"> View user (id inline)</Link>
+        <Link href="/setting/users"> View user (id inline)</Link>
         <HelloWave />
       </ThemedView>
 
       <ThemedView style={styles.titleContainer}>
       <Pressable onPress={() => router.navigate('/setting/profile')}>
-        <ThemedText>View user (imperative)</ThemedText>
+        <ThemedText>View profile (imperative)</ThemedText>
       </Pressable>
         <HelloWave />
       </ThemedView>
