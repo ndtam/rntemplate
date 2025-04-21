@@ -4,12 +4,12 @@
 export enum Routes {
   Home = 'home',
   HomeDetail = 'homedetail',
-  Posts = 'Posts',
+  Posts = 'index',
   PostDetail = 'detail',
-  Settings = 'Settings',
-  User = 'User',
-  Profile = 'Profile',
-  Explore = 'Explore',
+  Settings = 'index',
+  User = 'index',
+  Profile = 'profile',
+  Task = 'task',
 
 }
 
@@ -20,7 +20,7 @@ export type RootStackParams = {
   [Routes.Home]: undefined;
   [Routes.Posts]: undefined;
   [Routes.Settings]: undefined;
-  [Routes.Explore]: undefined;
+  [Routes.Task]: undefined;
 };
 
 export type PostStackParams = {

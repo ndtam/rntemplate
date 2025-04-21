@@ -46,7 +46,7 @@ export default function RegisterScreen() {
       return
     }
     addNewUser()
-    router.navigate('/(tabs)/setting/users/Dashboard')
+    router.navigate('/(tabs)/setting/users/dashboard')
   }
 
   return (
@@ -92,7 +92,7 @@ export default function RegisterScreen() {
       </Button>
       <View style={styles.row}>
         <Text>Already have an account? </Text>
-        <TouchableOpacity onPress={() => router.replace('/setting/users/LoginScreen')}>
+        <TouchableOpacity onPress={() => router.replace('/setting/users/login')}>
           <Text style={styles.link}>Login</Text>
         </TouchableOpacity>
       </View>

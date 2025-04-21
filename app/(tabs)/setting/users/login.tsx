@@ -24,7 +24,7 @@ export default function LoginScreen() {
       setPassword({ ...password, error: passwordError });
       return;
     }
-    router.navigate("/(tabs)/setting/users/Dashboard");
+    router.navigate("/(tabs)/setting/users/dashboard");
   };
 
   return (
@@ -33,6 +33,7 @@ export default function LoginScreen() {
       <Logo />
       <Header value="Welcome back." />
       <TextInput
+        title="Email"
         label="Email"
         returnKeyType="next"
         value={email.value}
@@ -68,7 +69,7 @@ export default function LoginScreen() {
       </Button> */}
       <View style={styles.row}>
         <Text>Don’t have an account? </Text>
-        <TouchableOpacity onPress={() => router.replace('/setting/users/LoginScreen')}>
+        <TouchableOpacity onPress={() => router.replace('/setting/users/login')}>
           <Text style={styles.link}>Sign up</Text>
         </TouchableOpacity>
       </View>

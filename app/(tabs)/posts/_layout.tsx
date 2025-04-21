@@ -19,7 +19,6 @@ export default function PostsLayout() {
     <ThemeProvider value={colorScheme === "dark" ? DarkTheme : DefaultTheme}>
       <Stack>
         <Stack.Screen name="index" options={{ headerShown: false }} />
-        <Stack.Screen name="[postID]" options={{ headerShown: false }} />
         <Stack.Screen name="detail" options={{ headerShown: false }} />
       </Stack>
       <StatusBar style="auto" />

@@ -4,15 +4,20 @@ import { TextInput as Input } from 'react-native-paper'
 import { useTheme } from 'react-native-paper'
 
 interface TextInputProps {
+  title?: string;
   errorText?: string;
   description?: string;
   [key: string]: any;
 }
 
-export default function TextInput({ errorText, description, ...props }: TextInputProps) {
+export default function TextInput({ title, errorText, description, ...props }: TextInputProps) {
   const theme = useTheme()
   return (
     <View style={styles.container}>
+      {title ? (
+        <Text style={styles.description}>{title}</Text>
+      ) : null}
+      
       <Input
         style={styles.input}
         selectionColor={'#560CCE'}

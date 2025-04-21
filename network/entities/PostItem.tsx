@@ -19,17 +19,6 @@ const PostItem = ({ post }: PostItemProps) => {
 
   return (
     <>
-      <View style={styles.container}>
-      <Link
-          href={{
-            pathname: "/posts/[postID]",
-            params: { postID: post.id},
-          }}
-        >
-          Mock using [posts/[postID].tsx] - post.id - {post.id}
-        </Link>
-      </View>
-      
       <TouchableOpacity onPress={onPress}>
         <View style={styles.container}>
           <Text style={styles.title}>{title}</Text>

@@ -22,24 +22,26 @@ type Movie = {
 
 export default function TaskScreen() {
 
-  const [isLoading, setLoading] = useState(true);
-  const [data, setData] = useState<Movie[]>([]);
+  // Call API with fetch
 
-  const getMovies = async () => {
-    try {
-      const response = await fetch('https://reactnative.dev/movies.json');
-      const json = await response.json();
-      setData(json.movies);
-    } catch (error) {
-      console.error(error);
-    } finally {
-      setLoading(false);
-    }
-  };
+  // const [isLoading, setLoading] = useState(true);
+  // const [data, setData] = useState<Movie[]>([]);
 
-  useEffect(() => {
-    getMovies();
-  }, []);
+  // const getMovies = async () => {
+  //   try {
+  //     const response = await fetch('https://reactnative.dev/movies.json');
+  //     const json = await response.json();
+  //     setData(json.movies);
+  //   } catch (error) {
+  //     console.error(error);
+  //   } finally {
+  //     setLoading(false);
+  //   }
+  // };
+
+  // useEffect(() => {
+  //   getMovies();
+  // }, []);
 
 
   const theme = useTheme();

@@ -15,13 +15,13 @@ export default function UserScreen() {
       <Paragraph value="The easiest way to start with your amazing application." />
       <Button
         mode="contained"
-        onPress={() => router.navigate("/(tabs)/setting/users/LoginScreen")}
+        onPress={() => router.navigate("/(tabs)/setting/users/login")}
       >
         Login
       </Button>
       <Button
         mode="outlined"
-        onPress={() => router.navigate("/(tabs)/setting/users/RegisterScreen")}
+        onPress={() => router.navigate("/(tabs)/setting/users/register")}
       >
         Sign Up
       </Button>

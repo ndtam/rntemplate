@@ -7,7 +7,7 @@ const options = {
   baseURL: 'https://jsonplaceholder.typicode.com',
   headers: {
     "Content-Type": "application/json",
-    Authorization: store.getState().app.authToken,
+    // Authorization: store.getState().app.authToken, // Jest for testing not working
   },
 };
 
